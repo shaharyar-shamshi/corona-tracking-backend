@@ -1,0 +1,18 @@
+{
+  "name": "corona",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "shaharyar",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "circular-json": "^0.5.9",
+    "express": "^4.17.1",
+    "puppeteer": "^2.1.1"
+  }
+}
