@@ -10,9 +10,12 @@
   "author": "shaharyar",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "circular-json": "^0.5.9",
     "express": "^4.17.1",
-    "puppeteer": "^2.1.1"
+    "fs": "0.0.1-security",
+    "puppeteer": "^2.1.1",
+    "request": "^2.88.2"
   }
 }

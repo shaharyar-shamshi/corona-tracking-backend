@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 var router = express.Router();
 const getBingData = require('./getBingData')
+const getHistoricalData = require('./getHistoricalData')
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true})); 
@@ -26,5 +27,6 @@ next();
 
 //get call
   app.get('/getData', getBingData.getBingData);
+  app.get('/getHistoricalData', getHistoricalData.getHistoricaldata )
 
 app.listen(3000, () => console.log("listening"));
