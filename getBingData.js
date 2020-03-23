@@ -1,36 +1,14 @@
-const puppeteer = require('puppeteer');
-const CircularJSON = require('circular-json');
+
+const axios = require("axios");
 const request = require("request");
 
 exports.getBingData = getBingData
 exports.getNews = getNews
 
 async function getBingData(req, res, next) {
-  const browser = await puppeteer.launch({
-    'args' : [
-      '--no-sandbox',
-      '--disable-setuid-sandbox'
-    ]
-  });
-  const page = await browser.newPage();
-//   page
-//     .on('console', message => {
-//     console.log(message.text());
-//     //const str = CircularJSON.stringify(message.text());
-//     //print(str);
-//      res.send(message.text());
-//     })
-page.on('console', async msg => console[msg._type](
-  ...await Promise.all(msg.args().map(async arg => {
-     let data = await arg.jsonValue()
-     res.send(data.world.areas)
-  }
-    ),
-)));
-  await page.goto('https://www.bing.com/covid', {"waitUntil" : "networkidle0"});
-  await browser.close();
-  
-  
+let data = await axios("https://www.bing.com/covid/data?IG=3FBCD20593A54108A6F62BA0E4BF2FA5")
+data = data.data
+res.send(data.areas)
 }
 
 async function getNews(req, res, next) {
