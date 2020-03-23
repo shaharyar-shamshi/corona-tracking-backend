@@ -4,6 +4,7 @@ var router = express.Router();
 const getBingData = require('./getBingData')
 const getHistoricalData = require('./getHistoricalData')
 const bodyParser = require('body-parser');
+const port = process.env.PORT || 3000
 
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true})); 
 app.use(bodyParser.json({limit: '50mb'}));
@@ -29,4 +30,4 @@ next();
   app.get('/getData', getBingData.getBingData);
   app.get('/getHistoricalData', getHistoricalData.getHistoricaldata )
 
-app.listen(3000, () => console.log("listening"));
+app.listen(port, () => console.log("listening"));
