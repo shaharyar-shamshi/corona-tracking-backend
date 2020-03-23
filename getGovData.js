@@ -1,5 +1,4 @@
 const puppeteer = require('puppeteer');
-const CircularJSON = require('circular-json');
 exports.getBingData = getBingData
 
 async function getGovData(req, res, next) {
