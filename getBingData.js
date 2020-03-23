@@ -3,7 +3,12 @@ const CircularJSON = require('circular-json');
 exports.getBingData = getBingData
 
 async function getBingData(req, res, next) {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    'args' : [
+      '--no-sandbox',
+      '--disable-setuid-sandbox'
+    ]
+  });
   const page = await browser.newPage();
 //   page
 //     .on('console', message => {
@@ -20,7 +25,7 @@ page.on('console', async msg => console[msg._type](
     ),
 )));
   await page.goto('https://www.bing.com/covid', {"waitUntil" : "networkidle0"});
-  browser.close();
+  await browser.close();
   
   
 }
