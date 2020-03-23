@@ -1,6 +1,9 @@
 const puppeteer = require('puppeteer');
 const CircularJSON = require('circular-json');
+const request = require("request");
+
 exports.getBingData = getBingData
+exports.getNews = getNews
 
 async function getBingData(req, res, next) {
   const browser = await puppeteer.launch({
@@ -28,5 +31,28 @@ page.on('console', async msg => console[msg._type](
   await browser.close();
   
   
+}
+
+async function getNews(req, res, next) {
+var options = { method: 'GET',
+  url: 'https://api.cognitive.microsoft.com/bing/v7.0/news/search',
+  qs: 
+   { q: 'corona virus',
+     count: '10',
+     offset: '0',
+     mkt: 'en-IN',
+     safeSearch: 'Moderate' 
+    },
+  headers: 
+   {
+     'Ocp-Apim-Subscription-Key': '12cef95241784b3b868b1111b9af4625' 
+    } 
+  };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+  res.send(JSON.parse(body).value)
+});
+
 }
 

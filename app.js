@@ -29,5 +29,6 @@ next();
 //get call
   app.get('/getData', getBingData.getBingData);
   app.get('/getHistoricalData', getHistoricalData.getHistoricaldata )
+  app.get('/getNews', getBingData.getNews)
 
 app.listen(port, () => console.log("listening"));
