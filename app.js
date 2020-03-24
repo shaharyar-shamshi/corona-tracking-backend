@@ -9,7 +9,6 @@ const port = process.env.PORT || 3000
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true})); 
 app.use(bodyParser.json({limit: '50mb'}));
 
-
 app.use(function (req, res, next) { 
 // Website you wish to allow to connect 
 res.setHeader('Access-Control-Allow-Origin', '*'); 
@@ -23,9 +22,6 @@ res.setHeader('Access-Control-Allow-Credentials', true);
 // Pass to next layer of middleware 
 next(); 
 });
-
-
-
 //get call
   app.get('/getData', getBingData.getBingData);
   app.get('/getHistoricalData', getHistoricalData.getHistoricaldata )
